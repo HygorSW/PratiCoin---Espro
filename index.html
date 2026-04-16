@@ -877,7 +877,7 @@
             <option>Mais de R$3.000</option>
           </select>
         </div>
-        <button class="btn-primary" style="width:100%;margin-top:8px;font-size:17px;padding:18px">Criar minha conta →</button>
+        <button class="btn-primary" style="width:100%;margin-top:8px;font-size:17px;padding:18px" onclick="TrocarPagina()">Criar minha conta →</button>
         <p style="text-align:center;font-size:13px;color:var(--text3);margin-top:16px">🔒 Seus dados são protegidos com criptografia 256-bit</p>
       </div>
     </div>
@@ -1298,6 +1298,9 @@
     nextBtn.style.display = 'inline-block';
   }
 
+function TrocarPagina() {
+  window.location.href = "https://hygorsw.github.io/PratiCoin---Espro/praticoins-app.html";
+}
   function resetQuiz() {
     quizAnswered = false;
     document.querySelectorAll('.quiz-option').forEach(o => {
