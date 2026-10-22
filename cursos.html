@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore o catálogo de investimentos da PRATICOIN, com vídeos reservados e materiais educativos de fontes confiáveis.">
+  <title>Educação | PRATICOIN</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/cursos.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="PRATICOIN - página inicial"><span class="brand-mark" aria-hidden="true">↗</span><span>PRATI<span class="gold">COIN</span></span></a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav">Menu</button>
+    <nav id="main-nav" class="main-nav" aria-label="Navegação principal">
+      <a href="index.html">Home</a><a href="index.html#sobre">O que Somos</a><a href="cursos.html" aria-current="page">Educação</a><a href="como-fazer.html">Como fazer</a><a href="simulador.html">Simulador</a></nav>
+  </header>
+  <main class="page-main section-wrap">
+    <section class="education-hero">
+      <div class="education-hero-copy">
+        <p class="eyebrow">CENTRAL DE CONHECIMENTO PRATICOIN</p>
+        <h1>Conheça os investimentos. <span class="gold">Escolha com informação.</span></h1>
+        <p class="lead">Explore os principais produtos do mercado financeiro, veja as aulas disponíveis e consulte materiais educativos para entender como cada investimento funciona.</p>
+        <div class="education-hero-actions"><a class="button" href="#catalogo">Explorar catálogo <span aria-hidden="true">↓</span></a><a class="button button-outline" href="#videos">Ver área de vídeos</a></div>
+      </div>
+      <aside class="education-highlight" aria-label="Conteúdo em destaque">
+        <span class="highlight-label"><span class="highlight-dot"></span> GUIA PARA COMEÇAR</span>
+        <div class="highlight-icon" aria-hidden="true">▤</div>
+        <h2>Antes de investir, entenda 3 pontos</h2>
+        <div class="highlight-points"><div><span>01</span><p><strong>Risco</strong><small>Quanto o valor pode oscilar ou haver perdas.</small></p></div><div><span>02</span><p><strong>Liquidez</strong><small>Quando e como você consegue resgatar.</small></p></div><div><span>03</span><p><strong>Rentabilidade</strong><small>Como o retorno é calculado e quais custos existem.</small></p></div></div>
+        <a class="highlight-link" href="como-fazer.html">Ver guia para começar <span aria-hidden="true">→</span></a>
+      </aside>
+    </section>
+
+    <section class="catalog-section" id="catalogo">
+      <div class="section-heading-row catalog-heading"><div><p class="eyebrow">CATÁLOGO DE EDUCAÇÃO</p><h2>O que você quer aprender hoje?</h2><p class="section-intro">Escolha um tema para ver um resumo e encontrar referências para estudar mais.</p></div><span class="catalog-count"><strong id="visible-count">15</strong> temas</span></div>
+      <div class="catalog-controls"><label class="search-box"><span aria-hidden="true">⌕</span><input id="catalog-search" type="search" placeholder="Buscar investimento..." aria-label="Buscar investimento"></label><div class="filter-list" role="group" aria-label="Filtrar por categoria"><button class="filter-chip is-active" type="button" data-filter="todos" aria-pressed="true">Todos</button><button class="filter-chip" type="button" data-filter="renda-fixa" aria-pressed="false">Renda fixa</button><button class="filter-chip" type="button" data-filter="renda-variavel" aria-pressed="false">Renda variável</button><button class="filter-chip" type="button" data-filter="fundos" aria-pressed="false">Fundos</button></div></div>
+      <div class="investment-grid" id="investment-grid">
+        <article class="investment-card" data-category="renda-fixa" data-search="cdb certificado deposito bancario renda fixa banco"><div class="investment-card-top"><span class="investment-icon">$</span><span class="investment-type">RENDA FIXA</span></div><h3>CDB</h3><p>Entenda como funciona o certificado de depósito bancário, seus prazos, liquidez e riscos.</p><button class="card-action" type="button" data-topic="CDB">Explorar tema <span>↗</span></button></article>
+        <article class="investment-card" data-category="renda-fixa" data-search="lci letra credito imobiliario isencao"><div class="investment-card-top"><span class="investment-icon">⌂</span><span class="investment-type">RENDA FIXA</span></div><h3>LCI</h3><p>Conheça a letra de crédito imobiliário, os prazos de carência e as condições de resgate.</p><button class="card-action" type="button" data-topic="LCI">Explorar tema <span>↗</span></button></article>
+        <article class="investment-card" data-category="renda-fixa" data-search="lca letra credito agronegocio"><div class="investment-card-top"><span class="investment-icon">♧</span><span class="investment-type">RENDA FIXA</span></div><h3>LCA</h3><p>Veja como a letra de crédito do agronegócio se relaciona ao financiamento do setor.</p><button class="card-action" type="button" data-topic="LCA">Explorar tema <span>↗</span></button></article>
+        <article class="investment-card" data-category="renda-fixa" data-search="lc letra cambio financeira"><div class="investment-card-top"><span class="investment-icon">↔</span><span class="investment-type">RENDA FIXA</span></div><h3>LC</h3><p>Aprenda o básico sobre a letra de câmbio emitida por sociedades financeiras.</p><button class="card-action" type="button" data-topic="LC">Explorar tema <span>↗</span></button></article>
+        <article class="investment-card" data-category="renda-fixa" data-search="tesouro selic titulo publico governo taxa selic"><div class="investment-card-top"><span class="investment-icon">▤</span><span class="investment-type">TÍTULO PÚBLICO</span></div><h3>Tesouro Selic</h3><p>Conheça o título público com rendimento ligado à taxa Selic e suas características.</p><button class="card-action" type="button" data-topic="Tesouro Selic">Explorar tema <span>↗</span></button></article>
+        <article class="investment-card" data-category="renda-fixa" data-search="tesouro prefixado juros taxa definida titulo publico"><div class="investment-card-top"><span class="investment-icon">＝</span><span class="investment-type">TÍTULO PÚBLICO</span></div><h3>Tesouro Prefixado</h3><p>Entenda a taxa definida na compra e por que o preço pode oscilar antes do vencimento.</p><button class="card-action" type="button" data-topic="Tesouro Prefixado">Explorar tema <span>↗</span></button></article>
+        <article class="investment-card" data-category="renda-fixa" data-search="tesouro ipca inflação titulo publico"><div class="investment-card-top"><span class="investment-icon">％</span><span class="investment-type">TÍTULO PÚBLICO</span></div><h3>Tesouro IPCA+</h3><p>Veja como a variação da inflação e uma taxa prefixada compõem o rendimento.</p><button class="card-action" type="button" data-topic="Tesouro IPCA+">Explorar tema <span>↗</span></button></article>
+        <article class="investment-card" data-category="renda-fixa" data-search="debentures dívida empresas crédito privado"><div class="investment-card-top"><span class="investment-icon">▥</span><span class="investment-type">CRÉDITO PRIVADO</span></div><h3>Debêntures</h3><p>Saiba como empresas captam recursos e quais riscos devem ser considerados.</p><button class="card-action" type="button" data-topic="Debêntures">Explorar tema <span>↗</span></button></article>
+        <article class="investment-card" data-category="renda-fixa" data-search="cri certificados recebiveis imobiliarios securitizacao"><div class="investment-card-top"><span class="investment-icon">⌂</span><span class="investment-type">RECEBÍVEIS</span></div><h3>CRI</h3><p>Conheça os certificados de recebíveis imobiliários e os riscos do crédito estruturado.</p><button class="card-action" type="button" data-topic="CRI">Explorar tema <span>↗</span></button></article>
+        <article class="investment-card" data-category="renda-fixa" data-search="cra certificados recebiveis agronegocio securitizacao"><div class="investment-card-top"><span class="investment-icon">♧</span><span class="investment-type">RECEBÍVEIS</span></div><h3>CRA</h3><p>Entenda os certificados de recebíveis do agronegócio e seus riscos.</p><button class="card-action" type="button" data-topic="CRA">Explorar tema <span>↗</span></button></article>
+        <article class="investment-card" data-category="renda-fixa" data-search="poupança caderneta rendimento banco liquidez"><div class="investment-card-top"><span class="investment-icon">◉</span><span class="investment-type">RENDA FIXA</span></div><h3>Poupança</h3><p>Revise as regras de rendimento, a data de aniversário e a cobertura do FGC.</p><button class="card-action" type="button" data-topic="Poupança">Explorar tema <span>↗</span></button></article>
+        <article class="investment-card" data-category="renda-variavel" data-search="ações bolsa empresas renda variavel"><div class="investment-card-top"><span class="investment-icon">↗</span><span class="investment-type">RENDA VARIÁVEL</span></div><h3>Ações</h3><p>Aprenda o que significa adquirir uma participação em uma empresa listada.</p><button class="card-action" type="button" data-topic="Ações">Explorar tema <span>↗</span></button></article>
+        <article class="investment-card" data-category="fundos" data-search="etfs fundos indice bolsa renda variavel renda fixa"><div class="investment-card-top"><span class="investment-icon">▦</span><span class="investment-type">FUNDOS</span></div><h3>ETFs</h3><p>Entenda os fundos de índice e como buscam acompanhar um índice de referência.</p><button class="card-action" type="button" data-topic="ETFs">Explorar tema <span>↗</span></button></article>
+        <article class="investment-card" data-category="fundos" data-search="fundos imobiliarios fii imóveis renda aluguel bolsa"><div class="investment-card-top"><span class="investment-icon">⌂</span><span class="investment-type">FUNDOS</span></div><h3>Fundos Imobiliários (FIIs)</h3><p>Conheça fundos ligados ao mercado imobiliário, suas cotas e principais riscos.</p><button class="card-action" type="button" data-topic="Fundos Imobiliários (FIIs)">Explorar tema <span>↗</span></button></article>
+        <article class="investment-card" data-category="fundos" data-search="fundos multimercado estratégias renda fixa ações moedas derivativos"><div class="investment-card-top"><span class="investment-icon">◈</span><span class="investment-type">FUNDOS</span></div><h3>Fundos Multimercado</h3><p>Veja como esses fundos podem combinar diferentes classes de ativos e estratégias.</p><button class="card-action" type="button" data-topic="Fundos Multimercado">Explorar tema <span>↗</span></button></article>
+      </div>
+      <p class="no-results" id="no-results" hidden>Nenhum investimento encontrado. Tente outro termo ou filtro.</p>
+
+    </section>
+
+    <section class="video-section" id="videos">
+      <div class="section-heading-row"><div><p class="eyebrow">AULAS EM VÍDEO</p><h2>Aprenda vendo, no seu ritmo.</h2><p class="section-intro">Os espaços abaixo já estão preparados. Os vídeos serão adicionados por você diretamente no código.</p></div><span class="catalog-count">5 espaços</span></div>
+      <div class="video-grid">
+        <a class="video-card video-card-link" href="player.html?video=poupanca-acoes"><div class="video-placeholder"><span class="video-play" aria-hidden="true">▶</span><span class="video-placeholder-label">PLAYER EDUCATIVO</span></div><div class="video-card-body"><span class="video-number">AULA 01 · FUNDAMENTOS</span><h3>Poupança e Ações</h3><p>Compare conceitos básicos de duas formas diferentes de investir.</p><span class="video-status">Abrir página do vídeo →</span></div></a>
+        <a class="video-card video-card-link" href="player.html?video=tesouro-direto"><div class="video-placeholder"><span class="video-play" aria-hidden="true">▶</span><span class="video-placeholder-label">PLAYER EDUCATIVO</span></div><div class="video-card-body"><span class="video-number">AULA 02 · TÍTULOS PÚBLICOS</span><h3>Tesouro Direto</h3><p>Conheça os títulos públicos e suas diferenças de rentabilidade.</p><span class="video-status">Abrir página do vídeo →</span></div></a>
+        <a class="video-card video-card-link" href="player.html?video=lci-lca"><div class="video-placeholder"><span class="video-play" aria-hidden="true">▶</span><span class="video-placeholder-label">PLAYER EDUCATIVO</span></div><div class="video-card-body"><span class="video-number">AULA 03 · RENDA FIXA</span><h3>LCI e LCA</h3><p>Entenda as letras de crédito e os pontos que merecem atenção.</p><span class="video-status">Abrir página do vídeo →</span></div></a>
+        <a class="video-card video-card-link" href="player.html?video=cdb"><div class="video-placeholder"><span class="video-play" aria-hidden="true">▶</span><span class="video-placeholder-label">PLAYER EDUCATIVO</span></div><div class="video-card-body"><span class="video-number">AULA 04 · RENDA FIXA</span><h3>CDB</h3><p>Veja como funciona o certificado de depósito bancário.</p><span class="video-status">Abrir página do vídeo →</span></div></a>
+        <a class="video-card video-card-link" href="player.html?video=bitcoin"><div class="video-placeholder"><span class="video-play" aria-hidden="true">▶</span><span class="video-placeholder-label">PLAYER EDUCATIVO</span></div><div class="video-card-body"><span class="video-number">AULA 05 · CRIPTOATIVOS</span><h3>Bitcoin</h3><p>Conheça os conceitos básicos e os riscos dos criptoativos.</p><span class="video-status">Abrir página do vídeo →</span></div></a>
+      </div>
+    </section>
+
+    <section class="resources-section" id="materiais">
+      <div class="section-heading-row"><div><p class="eyebrow">FONTES PARA CONTINUAR ESTUDANDO</p><h2>Biblioteca de materiais</h2><p class="section-intro">Links externos selecionados de instituições oficiais. O acesso depende da disponibilidade nos sites de origem.</p></div></div>
+      <div class="resource-grid">
+        <div class="resource-card"><span class="resource-icon">↗</span><span class="resource-kind">GUIA OFICIAL</span><h3>Características dos investimentos</h3><p>Risco, retorno e liquidez: conceitos importantes antes de escolher um produto.</p><span class="resource-link">Ler no Portal do Investidor ↗</span></div>
+        <div class="resource-card"><span class="resource-icon">⌂</span><span class="resource-kind">GUIA OFICIAL</span><h3>Fundos Imobiliários (FIIs)</h3><p>Entenda o que são FIIs, em quais ativos podem investir e quais riscos considerar.</p><span class="resource-link">Ler no Portal do Investidor ↗</span></div>
+        <div class="resource-card"><span class="resource-icon">▦</span><span class="resource-kind">GUIA OFICIAL</span><h3>ETFs — fundos de índice</h3><p>Veja como funcionam os fundos que buscam acompanhar um índice de referência.</p><span class="resource-link">Ler no Portal do Investidor ↗</span></div>
+        <div class="resource-card"><span class="resource-icon">▤</span><span class="resource-kind">SITE OFICIAL</span><h3>Títulos do Tesouro Direto</h3><p>Consulte as características do Tesouro Selic, Prefixado e IPCA+.</p><span class="resource-link">Ver títulos disponíveis ↗</span></div>
+        <div class="resource-card"><span class="resource-icon">▧</span><span class="resource-kind">BIBLIOTECA CVM</span><h3>Educação financeira da CVM</h3><p>Encontre publicações, cursos online e outros materiais educativos gratuitos.</p><span class="resource-link">Explorar biblioteca ↗</span></div>
+        <div class="resource-card"><span class="resource-icon">▶</span><span class="resource-kind">CURSOS E VÍDEOS</span><h3>B3 Educação</h3><p>Explore conteúdos educacionais sobre mercado financeiro e investimentos.</p><span class="resource-link">Ver conteúdos da B3 ↗</span></div>
+        <a class="resource-card" href="assets/materiais/Tesouro_Selic_e_Poupanca.docx" download><span class="resource-icon">↓</span><span class="resource-kind">DOCUMENTO DO PROJETO</span><h3>Tesouro Selic e Poupança</h3><p>Material introdutório com perguntas e respostas sobre funcionamento, liquidez, riscos e tributação.</p><span class="resource-link">Baixar documento ↓</span></a>
+      </div>
+    </section>
+
+    <section class="education-disclaimer"><span class="disclaimer-symbol" aria-hidden="true">i</span><div><h2>Informação antes da decisão</h2><p>A PRATICOIN tem finalidade educacional. Os investimentos têm características e riscos diferentes; rentabilidade passada não garante resultados futuros. Consulte os documentos oficiais e avalie seus objetivos antes de tomar decisões.</p><a class="button button-outline" href="simulador.html">Praticar no simulador ↗</a></div></section>
+  </main>
+  <footer class="site-footer"><div class="footer-main section-wrap"><div class="footer-brand"><a class="brand" href="index.html"><span class="brand-mark">↗</span><span>PRATI<span class="gold">COIN</span></span></a><p>Aprender, praticar e compreender os riscos.</p></div><div><h2>PLATAFORMA</h2><a href="cursos.html">Educação</a><a href="quiz.html">Quiz</a><a href="simulador.html">Simulador</a></div><div><h2>EMPRESA</h2><a href="index.html#sobre">O que somos</a><a href="como-fazer.html">Como fazer</a></div></div><div class="footer-bottom">© <span data-current-year></span> PRATICOIN — Projeto educacional.</div></footer>
+  <script src="js/main.js"></script><script src="js/cursos.js"></script>
+</body>
+</html>

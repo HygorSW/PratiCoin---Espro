@@ -1,0 +1,1 @@
+document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('.start-quiz').forEach(button=>button.addEventListener('click',()=>{window.location.href='quiz-game.html?nivel='+encodeURIComponent(button.dataset.level)+'&nova='+Date.now();}));});

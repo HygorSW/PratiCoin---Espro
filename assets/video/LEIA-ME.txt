@@ -1,0 +1,13 @@
+PRATICOIN — VÍDEOS DAS AULAS
+
+Copie seus vídeos MP4 para esta pasta e use estes nomes exatos para que o player os reconheça automaticamente:
+
+1. poupanca-acoes.mp4  — Poupança e Ações
+2. tesouro-direto.mp4  — Tesouro Direto
+3. lci-lca.mp4         — LCI e LCA
+4. cdb.mp4             — CDB
+5. bitcoin.mp4         — Bitcoin
+
+Depois, abra cursos.html pelo Live Server e clique na aula desejada. Não é necessário alterar o código se os arquivos tiverem esses nomes e forem MP4.
+
+Se seus vídeos tiverem outros nomes, renomeie-os conforme a lista acima ou ajuste o campo "file" no arquivo js/player.js.

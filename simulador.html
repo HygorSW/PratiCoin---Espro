@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Simule cenários hipotéticos de investimento com a PRATICOIN.">
+  <title>Simulador de investimentos | PRATICOIN</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/simulador.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="PRATICOIN - página inicial"><span class="brand-mark" aria-hidden="true">↗</span><span>PRATI<span class="gold">COIN</span></span></a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav">Menu</button>
+    <nav id="main-nav" class="main-nav" aria-label="Navegação principal"><a href="index.html">Home</a><a href="index.html#sobre">O que Somos</a><a href="cursos.html">Educação</a><a href="quiz.html">Quiz</a><a href="como-fazer.html">Como fazer</a><a href="simulador.html" aria-current="page">Simulador</a></nav>
+  </header>
+  <main class="section-wrap page-main">
+    <section class="page-heading"><p class="eyebrow">SIMULE ANTES DE DECIDIR</p><h1>Projeção de <span class="gold">investimentos</span></h1><p class="lead">Compare cenários hipotéticos de rentabilidade e veja como aportes e prazo podem influenciar o patrimônio projetado.</p></section>
+    <section class="sim-input-card">
+      <div class="section-heading-row"><div><p class="eyebrow">SEUS DADOS</p><h2>Dados do investimento</h2></div><span class="status-note">Simulação educacional</span></div>
+      <form id="investment-form" novalidate>
+        <div class="sim-inputs">
+          <div class="input-group"><label for="initial">Investimento inicial (R$)</label><input type="number" id="initial" name="initial" value="1000" min="0" max="1000000000" step="0.01" inputmode="decimal" required><small>Valor aplicado no início.</small></div>
+          <div class="input-group"><label for="monthly">Aporte mensal (R$)</label><input type="number" id="monthly" name="monthly" value="200" min="0" max="10000000" step="0.01" inputmode="decimal" required><small>Considerado ao fim de cada mês.</small></div>
+          <div class="input-group"><label for="years">Prazo (anos)</label><input type="number" id="years" name="years" value="10" min="1" max="80" step="1" required><small>De 1 a 80 anos.</small></div>
+        </div>
+        <button class="button" type="submit">Gerar projeção ↗</button>
+        <p id="form-error" class="form-error" role="alert" hidden></p>
+      </form>
+    </section>
+    <section class="results-section" aria-live="polite">
+      <div class="section-heading-row"><div><p class="eyebrow">COMPARAÇÃO</p><h2>Três perfis, nove cenários</h2></div><p class="results-caption">Taxas hipotéticas anuais efetivas</p></div>
+      <div class="profiles-grid">
+        <article class="profile-card" data-profile="conservative"><div class="profile-top"><span class="risk-badge">BAIXO RISCO · DIDÁTICO</span><span class="profile-index">01</span></div><h3>Conservador</h3><p class="profile-description">Exemplo didático com menor taxa hipotética; não significa ausência de risco.</p><div class="allocation-list"><div><span>Renda fixa</span><strong>70%</strong></div><div class="allocation-track"><span style="width:70%"></span></div><div><span>Multimercado</span><strong>20%</strong></div><div class="allocation-track"><span style="width:20%"></span></div><div><span>Renda variável</span><strong>10%</strong></div><div class="allocation-track"><span style="width:10%"></span></div></div><div class="scenario-list"><div><span>Pessimista <small>4% a.a.</small></span><strong id="conservative-pessimistic">—</strong></div><div><span>Esperado <small>8% a.a.</small></span><strong id="conservative-expected">—</strong></div><div><span>Otimista <small>11% a.a.</small></span><strong id="conservative-optimistic">—</strong></div></div></article>
+        <article class="profile-card featured" data-profile="moderate"><div class="profile-top"><span class="risk-badge">RISCO INTERMEDIÁRIO · DIDÁTICO</span><span class="profile-index">02</span></div><h3>Moderado</h3><p class="profile-description">Exemplo didático de equilíbrio entre classes de ativos e exposição a risco.</p><div class="allocation-list"><div><span>Renda fixa</span><strong>50%</strong></div><div class="allocation-track"><span style="width:50%"></span></div><div><span>Multimercado</span><strong>20%</strong></div><div class="allocation-track"><span style="width:20%"></span></div><div><span>Renda variável</span><strong>30%</strong></div><div class="allocation-track"><span style="width:30%"></span></div></div><div class="scenario-list"><div><span>Pessimista <small>6% a.a.</small></span><strong id="moderate-pessimistic">—</strong></div><div><span>Esperado <small>11% a.a.</small></span><strong id="moderate-expected">—</strong></div><div><span>Otimista <small>16% a.a.</small></span><strong id="moderate-optimistic">—</strong></div></div></article>
+        <article class="profile-card" data-profile="aggressive"><div class="profile-top"><span class="risk-badge">MAIOR RISCO · DIDÁTICO</span><span class="profile-index">03</span></div><h3>Arrojado</h3><p class="profile-description">Exemplo didático com maior variação possível; perdas também podem ser maiores.</p><div class="allocation-list"><div><span>Renda fixa</span><strong>20%</strong></div><div class="allocation-track"><span style="width:20%"></span></div><div><span>Multimercado</span><strong>20%</strong></div><div class="allocation-track"><span style="width:20%"></span></div><div><span>Renda variável</span><strong>60%</strong></div><div class="allocation-track"><span style="width:60%"></span></div></div><div class="scenario-list"><div><span>Pessimista <small>8% a.a.</small></span><strong id="aggressive-pessimistic">—</strong></div><div><span>Esperado <small>15% a.a.</small></span><strong id="aggressive-expected">—</strong></div><div><span>Otimista <small>22% a.a.</small></span><strong id="aggressive-optimistic">—</strong></div></div></article>
+      </div>
+    </section>
+    <section class="sim-summary">
+      <div><span class="summary-label">Total aportado no período</span><strong id="total-contributed">R$ —</strong></div>
+      <div><span class="summary-label">Patrimônio projetado (cenário moderado esperado)</span><strong id="summary-total">R$ —</strong></div>
+      <div><span class="summary-label">Rendimento hipotético estimado</span><strong id="summary-gain">R$ —</strong></div>
+    </section>
+    <section class="sim-chart-card"><div class="section-heading-row"><div><p class="eyebrow">EVOLUÇÃO ESTIMADA</p><h2>Seu patrimônio ao longo do tempo</h2></div><span class="chart-legend"><i></i> Cenário moderado esperado</span></div><div class="chart-container"><svg id="projection-chart" viewBox="0 0 720 280" role="img" aria-label="Gráfico de projeção do patrimônio no tempo"><text x="360" y="140" text-anchor="middle" fill="currentColor">Preencha os dados e gere a projeção.</text></svg></div><p class="chart-note">Valores nominais hipotéticos, sem descontar inflação, impostos, tarifas ou oscilações reais do mercado.</p></section>
+    <p class="disclaimer">Aviso educacional: os cenários e percentuais são premissas ilustrativas, não previsões de mercado nem recomendações de investimento. Rentabilidade real pode variar, inclusive com perdas. As proporções exibidas são exemplos didáticos e não constituem carteiras recomendadas.</p>
+  </main>
+  <footer class="site-footer"><div class="footer-main section-wrap"><div class="footer-brand"><a class="brand" href="index.html"><span class="brand-mark">↗</span><span>PRATI<span class="gold">COIN</span></span></a><p>Educação financeira por meio de conteúdo e simulações.</p></div><div><h2>PLATAFORMA</h2><a href="cursos.html">Educação</a><a href="simulador.html">Simulador</a></div><div><h2>EMPRESA</h2><a href="index.html#sobre">O que somos</a><a href="como-fazer.html">Como fazer</a></div></div><div class="footer-bottom">© <span data-current-year></span> PRATICOIN — Projeto educacional.</div></footer>
+  <script src="js/main.js"></script><script src="js/simulador.js"></script>
+</body>
+</html>
