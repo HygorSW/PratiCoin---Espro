@@ -60,50 +60,24 @@
       initial <= 1e9 && monthly <= 1e7 && Number.isInteger(years);
   }
 
+  const simulationSound = new Audio('assets/audio/mario-coin.mp3');
+  simulationSound.preload = 'auto';
+  simulationSound.volume = 0.65;
+
   function playSimulationSound() {
-    // Som curto gerado no navegador: não depende de arquivo externo.
-    // Só é chamado após o clique do usuário, respeitando as políticas de autoplay.
+    // Reproduz o efeito enviado pelo usuário ao iniciar uma simulação válida.
     try {
-      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-      if (!AudioContextClass) return;
-      const context = new AudioContextClass();
-      const now = context.currentTime;
-      const master = context.createGain();
-      master.gain.setValueAtTime(0.0001, now);
-      master.gain.exponentialRampToValueAtTime(0.075, now + 0.045);
-      master.gain.exponentialRampToValueAtTime(0.0001, now + 0.72);
-      master.connect(context.destination);
-
-      // Pequeno "whoosh" tonal e duas notas de confirmação suaves.
-      const sweep = context.createOscillator();
-      const sweepGain = context.createGain();
-      sweep.type = 'sine';
-      sweep.frequency.setValueAtTime(240, now);
-      sweep.frequency.exponentialRampToValueAtTime(620, now + 0.28);
-      sweepGain.gain.setValueAtTime(0.45, now);
-      sweepGain.gain.exponentialRampToValueAtTime(0.001, now + 0.32);
-      sweep.connect(sweepGain);
-      sweepGain.connect(master);
-      sweep.start(now);
-      sweep.stop(now + 0.34);
-
-      [660, 880].forEach((frequency, index) => {
-        const start = now + 0.36 + index * 0.11;
-        const tone = context.createOscillator();
-        const toneGain = context.createGain();
-        tone.type = 'sine';
-        tone.frequency.setValueAtTime(frequency, start);
-        toneGain.gain.setValueAtTime(0.0001, start);
-        toneGain.gain.exponentialRampToValueAtTime(index ? 0.28 : 0.2, start + 0.025);
-        toneGain.gain.exponentialRampToValueAtTime(0.0001, start + 0.24);
-        tone.connect(toneGain);
-        toneGain.connect(master);
-        tone.start(start);
-        tone.stop(start + 0.26);
-      });
-      window.setTimeout(() => context.close().catch(() => {}), 1300);
+      simulationSound.pause();
+      simulationSound.currentTime = 0;
+      const playback = simulationSound.play();
+      if (playback && typeof playback.catch === 'function') {
+        playback.catch(() => {
+          // Alguns navegadores ou configurações podem bloquear a reprodução.
+          // A simulação continua normalmente.
+        });
+      }
     } catch (_) {
-      // Se o navegador bloquear áudio, a simulação continua normalmente.
+      // O som nunca deve impedir os cálculos.
     }
   }
 
