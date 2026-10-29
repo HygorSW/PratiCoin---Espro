@@ -60,6 +60,53 @@
       initial <= 1e9 && monthly <= 1e7 && Number.isInteger(years);
   }
 
+  function playSimulationSound() {
+    // Som curto gerado no navegador: não depende de arquivo externo.
+    // Só é chamado após o clique do usuário, respeitando as políticas de autoplay.
+    try {
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContextClass) return;
+      const context = new AudioContextClass();
+      const now = context.currentTime;
+      const master = context.createGain();
+      master.gain.setValueAtTime(0.0001, now);
+      master.gain.exponentialRampToValueAtTime(0.075, now + 0.045);
+      master.gain.exponentialRampToValueAtTime(0.0001, now + 0.72);
+      master.connect(context.destination);
+
+      // Pequeno "whoosh" tonal e duas notas de confirmação suaves.
+      const sweep = context.createOscillator();
+      const sweepGain = context.createGain();
+      sweep.type = 'sine';
+      sweep.frequency.setValueAtTime(240, now);
+      sweep.frequency.exponentialRampToValueAtTime(620, now + 0.28);
+      sweepGain.gain.setValueAtTime(0.45, now);
+      sweepGain.gain.exponentialRampToValueAtTime(0.001, now + 0.32);
+      sweep.connect(sweepGain);
+      sweepGain.connect(master);
+      sweep.start(now);
+      sweep.stop(now + 0.34);
+
+      [660, 880].forEach((frequency, index) => {
+        const start = now + 0.36 + index * 0.11;
+        const tone = context.createOscillator();
+        const toneGain = context.createGain();
+        tone.type = 'sine';
+        tone.frequency.setValueAtTime(frequency, start);
+        toneGain.gain.setValueAtTime(0.0001, start);
+        toneGain.gain.exponentialRampToValueAtTime(index ? 0.28 : 0.2, start + 0.025);
+        toneGain.gain.exponentialRampToValueAtTime(0.0001, start + 0.24);
+        tone.connect(toneGain);
+        toneGain.connect(master);
+        tone.start(start);
+        tone.stop(start + 0.26);
+      });
+      window.setTimeout(() => context.close().catch(() => {}), 1300);
+    } catch (_) {
+      // Se o navegador bloquear áudio, a simulação continua normalmente.
+    }
+  }
+
   function simulate({ updateHome = false } = {}) {
     const initial = number('initial'), monthly = number('monthly'), years = number('years');
     const error = document.getElementById('form-error');
@@ -119,11 +166,104 @@
   }
 
   document.addEventListener('DOMContentLoaded', () => {
+    const dashboard = document.getElementById('simulation-dashboard');
+    const dashboardFab = document.getElementById('dashboard-fab');
+    const dashboardPanel = document.getElementById('dashboard-panel');
+    const dashboardClose = document.getElementById('dashboard-close');
+
+    const toggleDashboard = open => {
+      if (!dashboardPanel || !dashboardFab) return;
+      dashboardPanel.hidden = !open;
+      dashboardFab.setAttribute('aria-expanded', String(open));
+      dashboard.classList.toggle('is-open', open);
+    };
+    if (dashboardFab) dashboardFab.addEventListener('click', () => {
+      toggleDashboard(dashboardFab.getAttribute('aria-expanded') !== 'true');
+    });
+    if (dashboardClose) dashboardClose.addEventListener('click', () => toggleDashboard(false));
+    document.querySelectorAll('[data-dashboard-target]').forEach(button => {
+      button.addEventListener('click', () => {
+        const target = document.getElementById(button.dataset.dashboardTarget);
+        if (target) {
+          toggleDashboard(false);
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (button.dataset.dashboardTarget === 'investment-form') {
+            window.setTimeout(() => document.getElementById('initial')?.focus({ preventScroll: true }), 450);
+          }
+        }
+      });
+    });
+
     const form = document.getElementById('investment-form');
     if (form) {
-      form.addEventListener('submit', event => {
+      const loader = document.getElementById('simulation-loader');
+      const submitButton = form.querySelector('button[type="submit"]');
+      let isCalculating = false;
+
+      const wait = ms => new Promise(resolve => window.setTimeout(resolve, ms));
+      const showLoader = () => {
+        if (!loader) return;
+        loader.classList.add('is-visible');
+        loader.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('simulation-is-loading');
+      };
+      const hideLoader = () => {
+        if (!loader) return;
+        loader.classList.remove('is-visible');
+        loader.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('simulation-is-loading');
+      };
+
+      form.addEventListener('submit', async event => {
         event.preventDefault();
-        simulate();
+        if (isCalculating) return;
+
+        // Valida primeiro para não mostrar o loading quando houver dados inválidos.
+        const initial = number('initial'), monthly = number('monthly'), years = number('years');
+        if (!validInputs(initial, monthly, years)) {
+          simulate();
+          return;
+        }
+
+        isCalculating = true;
+        if (submitButton) {
+          submitButton.disabled = true;
+          submitButton.setAttribute('aria-busy', 'true');
+        }
+        showLoader();
+        playSimulationSound();
+        try {
+          // Mantém a animação tempo suficiente para parecer um cálculo real.
+          await wait(1550);
+          const result = simulate();
+          if (result && dashboard) {
+            const dashboardTotal = document.getElementById('dashboard-total');
+            const dashboardGain = document.getElementById('dashboard-gain');
+            const dashboardContributed = document.getElementById('dashboard-contributed');
+            const dashboardPeriod = document.getElementById('dashboard-period');
+            if (dashboardTotal) dashboardTotal.textContent = money(result.expected);
+            if (dashboardGain) dashboardGain.textContent = money(result.expected - result.contributed);
+            if (dashboardContributed) dashboardContributed.textContent = money(result.contributed);
+            if (dashboardPeriod) dashboardPeriod.textContent =
+              `${result.years} ${result.years === 1 ? 'ano' : 'anos'} · aporte mensal de ${money(result.monthly)}`;
+            dashboard.hidden = false;
+            dashboard.classList.add('has-results');
+            toggleDashboard(false);
+          }
+          if (loader) {
+            loader.classList.remove('is-visible');
+            await wait(350);
+            loader.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('simulation-is-loading');
+          }
+        } finally {
+          hideLoader();
+          isCalculating = false;
+          if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.removeAttribute('aria-busy');
+          }
+        }
       });
       // Preenche resultados iniciais para que a página não abra vazia.
       simulate();

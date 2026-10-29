@@ -10,7 +10,7 @@
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="index.html" aria-label="PRATICOIN - página inicial"><span class="brand-mark" aria-hidden="true">↗</span><span>PRATI<span class="gold">COIN</span></span></a>
+    <a class="brand" href="index.html" aria-label="PRATICOIN - página inicial"><img class="brand-logo" src="assets/img/praticoin-simbolo.png" alt="" aria-hidden="true"><span>PRATI<span class="gold">COIN</span></span></a>
     <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav">Menu</button>
     <nav id="main-nav" class="main-nav" aria-label="Navegação principal"><a href="index.html">Home</a><a href="index.html#sobre">O que Somos</a><a href="cursos.html">Educação</a><a href="quiz.html">Quiz</a><a href="como-fazer.html">Como fazer</a><a href="simulador.html" aria-current="page">Simulador</a></nav>
   </header>
@@ -30,7 +30,7 @@
     </section>
     <section class="results-section" aria-live="polite">
       <div class="section-heading-row"><div><p class="eyebrow">COMPARAÇÃO</p><h2>Três perfis, nove cenários</h2></div><p class="results-caption">Taxas hipotéticas anuais efetivas</p></div>
-      <div class="profiles-grid">
+      <div class="profiles-grid" id="profiles-grid">
         <article class="profile-card" data-profile="conservative"><div class="profile-top"><span class="risk-badge">BAIXO RISCO · DIDÁTICO</span><span class="profile-index">01</span></div><h3>Conservador</h3><p class="profile-description">Exemplo didático com menor taxa hipotética; não significa ausência de risco.</p><div class="allocation-list"><div><span>Renda fixa</span><strong>70%</strong></div><div class="allocation-track"><span style="width:70%"></span></div><div><span>Multimercado</span><strong>20%</strong></div><div class="allocation-track"><span style="width:20%"></span></div><div><span>Renda variável</span><strong>10%</strong></div><div class="allocation-track"><span style="width:10%"></span></div></div><div class="scenario-list"><div><span>Pessimista <small>4% a.a.</small></span><strong id="conservative-pessimistic">—</strong></div><div><span>Esperado <small>8% a.a.</small></span><strong id="conservative-expected">—</strong></div><div><span>Otimista <small>11% a.a.</small></span><strong id="conservative-optimistic">—</strong></div></div></article>
         <article class="profile-card featured" data-profile="moderate"><div class="profile-top"><span class="risk-badge">RISCO INTERMEDIÁRIO · DIDÁTICO</span><span class="profile-index">02</span></div><h3>Moderado</h3><p class="profile-description">Exemplo didático de equilíbrio entre classes de ativos e exposição a risco.</p><div class="allocation-list"><div><span>Renda fixa</span><strong>50%</strong></div><div class="allocation-track"><span style="width:50%"></span></div><div><span>Multimercado</span><strong>20%</strong></div><div class="allocation-track"><span style="width:20%"></span></div><div><span>Renda variável</span><strong>30%</strong></div><div class="allocation-track"><span style="width:30%"></span></div></div><div class="scenario-list"><div><span>Pessimista <small>6% a.a.</small></span><strong id="moderate-pessimistic">—</strong></div><div><span>Esperado <small>11% a.a.</small></span><strong id="moderate-expected">—</strong></div><div><span>Otimista <small>16% a.a.</small></span><strong id="moderate-optimistic">—</strong></div></div></article>
         <article class="profile-card" data-profile="aggressive"><div class="profile-top"><span class="risk-badge">MAIOR RISCO · DIDÁTICO</span><span class="profile-index">03</span></div><h3>Arrojado</h3><p class="profile-description">Exemplo didático com maior variação possível; perdas também podem ser maiores.</p><div class="allocation-list"><div><span>Renda fixa</span><strong>20%</strong></div><div class="allocation-track"><span style="width:20%"></span></div><div><span>Multimercado</span><strong>20%</strong></div><div class="allocation-track"><span style="width:20%"></span></div><div><span>Renda variável</span><strong>60%</strong></div><div class="allocation-track"><span style="width:60%"></span></div></div><div class="scenario-list"><div><span>Pessimista <small>8% a.a.</small></span><strong id="aggressive-pessimistic">—</strong></div><div><span>Esperado <small>15% a.a.</small></span><strong id="aggressive-expected">—</strong></div><div><span>Otimista <small>22% a.a.</small></span><strong id="aggressive-optimistic">—</strong></div></div></article>
@@ -45,6 +45,46 @@
     <p class="disclaimer">Aviso educacional: os cenários e percentuais são premissas ilustrativas, não previsões de mercado nem recomendações de investimento. Rentabilidade real pode variar, inclusive com perdas. As proporções exibidas são exemplos didáticos e não constituem carteiras recomendadas.</p>
   </main>
   <footer class="site-footer"><div class="footer-main section-wrap"><div class="footer-brand"><a class="brand" href="index.html"><span class="brand-mark">↗</span><span>PRATI<span class="gold">COIN</span></span></a><p>Educação financeira por meio de conteúdo e simulações.</p></div><div><h2>PLATAFORMA</h2><a href="cursos.html">Educação</a><a href="simulador.html">Simulador</a></div><div><h2>EMPRESA</h2><a href="index.html#sobre">O que somos</a><a href="como-fazer.html">Como fazer</a></div></div><div class="footer-bottom">© <span data-current-year></span> PRATICOIN — Projeto educacional.</div></footer>
+
+
+  <div class="simulation-dashboard" id="simulation-dashboard" hidden>
+    <button class="dashboard-fab" id="dashboard-fab" type="button" aria-expanded="false" aria-controls="dashboard-panel">
+      <span class="dashboard-fab-icon" aria-hidden="true">▦</span>
+      <span>Meu dashboard</span>
+      <span class="dashboard-fab-chevron" aria-hidden="true">⌃</span>
+    </button>
+    <section class="dashboard-panel" id="dashboard-panel" aria-label="Resumo da simulação" hidden>
+      <div class="dashboard-panel-head">
+        <div><p class="eyebrow">PRATICOIN INSIGHTS</p><h2>Resumo da simulação</h2></div>
+        <button class="dashboard-close" id="dashboard-close" type="button" aria-label="Fechar dashboard">×</button>
+      </div>
+      <p class="dashboard-period" id="dashboard-period">Seu plano de investimento</p>
+      <div class="dashboard-kpis">
+        <article><span>Patrimônio projetado</span><strong id="dashboard-total">R$ —</strong><small>Cenário moderado · 11% a.a.</small></article>
+        <article><span>Rendimento estimado</span><strong id="dashboard-gain">R$ —</strong><small>Acima do total aportado</small></article>
+        <article><span>Total aportado</span><strong id="dashboard-contributed">R$ —</strong><small>Valor inicial + aportes</small></article>
+      </div>
+      <div class="dashboard-actions">
+        <button type="button" data-dashboard-target="projection-chart"><span aria-hidden="true">↗</span> Ver evolução</button>
+        <button type="button" data-dashboard-target="profiles-grid"><span aria-hidden="true">▤</span> Comparar cenários</button>
+        <button type="button" data-dashboard-target="investment-form"><span aria-hidden="true">✎</span> Ajustar valores</button>
+      </div>
+      <p class="dashboard-footnote">Estimativas educativas, não garantias de rentabilidade.</p>
+    </section>
+  </div>
+
+  <div class="simulation-loader" id="simulation-loader" aria-hidden="true" role="status" aria-live="polite">
+    <div class="loader-orbit loader-orbit-one"></div>
+    <div class="loader-orbit loader-orbit-two"></div>
+    <div class="loader-content">
+      <img class="loader-logo" src="assets/img/logo-praticoin.png" alt="PRATICOIN">
+      <p class="loader-title">Calculando sua simulação</p>
+      <p class="loader-subtitle">Projetando possibilidades para o seu futuro.</p>
+      <div class="loader-progress" aria-hidden="true"><span></span></div>
+      <span class="loader-dots" aria-hidden="true">ANALISANDO CENÁRIOS <i>•</i> COMPARANDO TAXAS</span>
+    </div>
+  </div>
+
   <script src="js/main.js"></script><script src="js/simulador.js"></script>
 </body>
 </html>
